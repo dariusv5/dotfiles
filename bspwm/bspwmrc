@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# Exec Hotkeys
+sxhkd &
+# Exec Redshift
+redshift &
+# Set Wallpaper
+nitrogen --restore &
+# Set Cursor
+xsetroot -cursor_name left_ptr &
+# Enable NumLock
+numlockx on &
+# Run Guake
+guake &
+# Exec Bar
+~/dotfiles/polybar/launch_polybar.sh &
+# Exec Compositor
+~/dotfiles/compton/launch_compton.sh &
+# Exec Notifications
+~/dotfiles/dunst/launch_dunst.sh &
+# Launch Welcome Terminal
+~/dotfiles/scripts/launch_termite.sh &
+
+
+# Set Virtual Desktops
+bspc monitor -d 1 2 3 4 5 6 7
+
+bspc config border_width         0
+bspc config window_gap			 8
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focus_follows_pointer true
+
+# Set Music Desktop Padding
+bspc config -d '^4' top_padding 100
+bspc config -d '^4' bottom_padding 100
+bspc config -d '^4' left_padding 180
+bspc config -d '^4' right_padding 180
+
+#Set Browser Desktop Layout to monocle
+bspc desktop '^3' -l monocle
+
+# Source Colors.
+. "/home/darius/dotfiles/scheme/colors.sh"
+
+# Set colors.
+bspc config normal_border_color "$color0"
+bspc config active_border_color "$color0"
+bspc config focused_border_color "$color1"
+bspc config presel_feedback_color "$color1"
+
+#bspc config bottom_padding		5
+#bspc config top_padding		5
+#bspc config left_padding		5
+#bspc config right_padding		5
+
+bspc rule -a Gnome-system-monitor state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Gthumb state=floating
+bspc rule -a mpv state=floating
+#bspc rule -a YakYak state=floating
+bspc rule -a Nitrogen state=floating
+bspc rule -a Pamac-manager state=floating
+bspc rule -a Guake state=floating
+bspc rule -a Subl3 desktop='^2'
+bspc rule -a Atom desktop='^2'
+bspc rule -a Chromium desktop='^3'
+bspc rule -a Vivaldi-stable desktop='^3'
+bspc rule -a qBittorrent desktop='^6'
+#bspc rule -a *:crx_nckgahadagoaajjgafhacjanaoiihapd desktop='^1'

@@ -1,0 +1,47 @@
+set nocompatible              " be iMproved, require
+set laststatus=2
+set shell=/bin/bash
+
+"VUNDLE--------------------------------
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'itchyny/lightline.vim'
+Plugin 'dylanaraps/wal.vim'
+
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+"VUNDLE--------------------------------
+
+set textwidth=79  " lines longer than 79 columns will be broken
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4     " a hard TAB displays as 4 columns
+set expandtab     " insert spaces when hitting TABs
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround    " round indent to multiple of 'shiftwidth'
+set autoindent    " align the new line indent with the previous line
+
+colorscheme wal
+set noshowmode
+set number
+set hls
+syntax on
+set tabstop=4
+set shell=/bin/bash
+
+"map <Esc><Esc> :w<CR>
+nmap <F2> :update<CR>
+vmap <F2> <Esc><F2>gv
+imap <F2> <c-o><F2>
+
+nmap <F12> :q<CR>
+vmap <F12> <Esc><F12>
+imap <F12> <c-o><F12>
+
+nmap <C-F12> :q!<CR>
+vmap <C-F12> <Esc><C-F12>
+imap <C-F12> <c-o><C-F12>

@@ -1,0 +1,20 @@
+/* TABS  */
+ 
+#panels-container#main > div.toolbar.toolbar-addressbar::after {display: none !important;}
+#switch > button.webviewbtn > img,
+.tab-position .tab.active .tab-header .favicon {background-color: transparent !important;}
+.linux .vivaldi,
+#browser.linux.tabs-top #header #titlebar .window-buttongroup button {height: 30px !important;}
+.linux.normal .topmenu + #tabs-container.top,
+.linux.normal #tabs-container.top,
+.linux.normal .topmenu + #tabs-container.top {padding-top: 0 !important;}
+.tabs-bottom .tab-position .tab,
+.tabs-top .tab-position .tab {margin-right: 0 !important;}
+.tabs-top .tab-position .tab {color: var(--colorBorderIntense)!important;}
+#panels-container {border: none !important;}
+.color-behind-tabs-on .tab-position .tab.active {background-color: rgba(18, 19, 20, 0.25) !important;color: white !important;}
+.tabs-top.color-behind-tabs-on #tabs-container {background-image: none !important;}
+
+/* HIDE NEW TAB */
+
+.newtab {display: none}

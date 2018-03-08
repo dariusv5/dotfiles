@@ -1,0 +1,15 @@
+ rofi.theme: ~/dotfiles/rofi/theme.rasi
+! rofi.fullscreen: true
+! rofi.padding: 300
+rofi.lines: 5
+rofi.terminal: termite
+rofi.font: Gohu GohuFont 12
+! rofi.eh: 1
+!rofi.line-margin: 10
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+! rofi.location: 3
+rofi.width: 500
+! rofi.height: 768
+rofi.padding: 20
+!rofi.show-icons: true

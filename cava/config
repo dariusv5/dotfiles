@@ -1,0 +1,22 @@
+[general]
+
+# Accepts only non-negative values.
+framerate = 30
+
+# The number of bars (0-200). 0 sets it to auto (fill up console).
+# Bars' width and space between bars in number of characters.
+; bars = 0
+bar_width = 1
+;bar_spacing = 2
+
+[color]
+# Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
+# Or defined by hex code '#xxxxxx' (hex code must be within '').
+;background = '#ba953a'
+;foreground = white
+
+# Gradient mode, only hex defined colors are supported, background must also be defined in hex
+# or remain commented out. 1 = on, 0 = off.
+; gradient = 0
+; gradient_color_1 = '#0099ff'
+; gradient_color_2 = '#ff3399'

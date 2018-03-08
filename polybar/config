@@ -1,0 +1,275 @@
+[colors]
+background = ${xrdb:color0}
+foreground = ${xrdb:color7}
+foreground-alt = ${xrdb:color7}
+primary = ${xrdb:color4}
+secondary = ${xrdb:color2}
+alert = ${xrdb:color1}
+
+[bar/main]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Gohu Gohufont:pixelsize=14;1
+font-1 = SauceCodePro Nerd Font:pixelsize=11;1
+font-2 = FontAwesome:pixelsize=10;1
+font-3 = Noto Color Emoji:pixelsize=10;1
+
+
+
+;===========================================================================
+; BAR ORDER
+;===========================================================================
+modules-left =  temperature fan-speed cmus-nowplaying
+modules-center = bspwm
+modules-right =  weather-channel pulseaudio-tail date
+;===========================================================================
+
+tray-position = none
+tray-padding = 0
+;tray-transparent = true
+;tray-background = #0063ff
+
+wm-restack = bspwm
+
+override-redirect = false
+
+#scroll-up = bspwm-desknext
+#scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = default
+
+;===========================================================================
+;============= Module bspwm
+;===========================================================================
+[module/bspwm]
+type = internal/bspwm
+
+enable-scroll = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+
+label-focused = %icon%
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.primary}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+label-occupied-foreground = ${colors.foreground-alt}
+
+label-urgent = %icon%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+;===========================================================================
+;============= Module time
+;===========================================================================
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %d-%m-%Y"
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.primary}
+
+label = %date% %time%
+
+
+;===========================================================================
+;============= Module volume
+;===========================================================================
+[module/pulseaudio-tail]
+type = custom/script
+exec = ~/dotfiles/polybar/scripts/pulseaudio-tail.sh
+format-prefix = " "
+format-prefix-foreground = ${colors.primary}
+tail = true
+click-right = exec pavucontrol &
+click-left = ~/dotfiles/polybar/scripts/pulseaudio-tail.sh --mute
+scroll-up = ~/dotfiles/polybar/scripts/pulseaudio-tail.sh --up
+scroll-down = ~/dotfiles/polybar/scripts/pulseaudio-tail.sh --down
+
+
+;===========================================================================
+;============= Module temperature
+;===========================================================================
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 75
+
+format = <label>
+format-warn = <label-warn>
+format-prefix = " "
+format-prefix-foreground = ${colors.primary}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+
+;===========================================================================
+;============= Module fanspeed
+;===========================================================================
+[module/fan-speed]
+type = custom/script
+exec = ~/dotfiles/polybar/scripts/fan.sh
+interval = 5
+format-prefix = " "
+format-prefix-foreground = ${colors.primary}
+
+
+;===========================================================================
+;============= Module cmus
+;===========================================================================
+[module/cmus-nowplaying]
+type = custom/script
+exec = sh ~/dotfiles/polybar/scripts/music.sh
+exec-if = pgrep -x cmus
+interval = 1
+
+format-prefix = " "
+format-padding = 0
+format-prefix-foreground = ${colors.primary}
+click-left = cmus-remote --pause
+click-right = cmus-remote -n
+label = %output%
+;label = %output:0:60:...%
+
+
+;===========================================================================
+;============= Module weather
+;===========================================================================
+[module/weather-channel]
+type = custom/script
+interval = 600
+format = <label>
+label-font = 1
+format-prefix = "  "
+format-prefix-foreground = ${colors.primary}
+exec = ~/dotfiles/polybar/scripts/weather.sh
+format-padding = 0
+
+
+
+;===========================================================================
+;============= Module cpu
+;===========================================================================
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+;===========================================================================
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/eth]
+type = internal/network
+interface = net0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 35
+margin-bottom = 0
+
+; vim:ft=dosini
