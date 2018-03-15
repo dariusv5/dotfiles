@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-MAX_LENGTH=58
+MAX_LENGTH=57
 CUT_SUFFIX="..."
 
 cmusstatus=$(cmus-remote -C status)
@@ -22,7 +22,17 @@ get_stat() {
 	echo "$(get_all_but_first $sub)"
 }
 
-output="$(get_stat artist)  -  $(get_stat title)"
+status=$(get_stat status)
+if [ "$status" == "playing" ]; then
+	status=""
+elif [ "$status" == "paused" ];then
+	status=""
+elif [ "$status" == "stopped" ];then
+	status=""
+fi
+
+
+output="$status $(get_stat artist)  -  $(get_stat title)"
 
 if [ ${#output} -gt $MAX_LENGTH ]; then
 	cut_length=$(( $MAX_LENGTH-${#CUT_SUFFIX} ))

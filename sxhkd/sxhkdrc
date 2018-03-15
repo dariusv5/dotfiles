@@ -126,7 +126,7 @@ super + {_,shift + }{grave,1-9,0}
 	bspc {desktop -f,node -d} '^{7,1-9,10}'
 
 
-# ººº
+#
 # preselect
 #
 

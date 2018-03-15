@@ -2,7 +2,7 @@
 background = ${xrdb:color0}
 foreground = ${xrdb:color7}
 foreground-alt = ${xrdb:color7}
-primary = ${xrdb:color4}
+primary = ${xrdb:accent}
 secondary = ${xrdb:color2}
 alert = ${xrdb:color1}
 
@@ -180,6 +180,8 @@ format-padding = 0
 format-prefix-foreground = ${colors.primary}
 click-left = cmus-remote --pause
 click-right = cmus-remote -n
+scroll-up = ~/dotfiles/polybar/scripts/pulseaudio-tail.sh --up 5
+scroll-down = ~/dotfiles/polybar/scripts/pulseaudio-tail.sh --down 5
 label = %output%
 ;label = %output:0:60:...%
 

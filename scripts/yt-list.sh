@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Simple script I use to queue a list for youtube-dl
 
-LIST_FILE="/mnt/FILES/Video/list.txt"
-OUTPUT_DIR="/mnt/FILES/Video/"
+LIST_FILE="/mnt/FILES/.backup/list.txt"
+OUTPUT_DIR="/mnt/FILES/.backup/vid/"
 NAME_FORMAT='%(title)s-%(id)s.%(ext)s'
 LIST_EDITOR=gedit
 # Print title after adding link
@@ -23,7 +23,8 @@ printList(){
 }
 
 addLink() {
-	local url=$(xsel -ob)
+	local url
+    url=$(xsel -ob)
 	if [ ! ${url:0:4} == "http" ]; then echo -e "Invalid url?\n\n$url"; exit 1; fi
 	echo "URL added: $url"
 	echo $url >> $LIST_FILE

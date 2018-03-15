@@ -2,6 +2,8 @@
 
 # Exec Hotkeys
 sxhkd &
+# Merge xrdb
+xrdb -merge ~/.Xresources
 # Exec Redshift
 redshift &
 # Set Wallpaper
@@ -10,8 +12,7 @@ nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 # Enable NumLock
 numlockx on &
-# Run Guake
-guake &
+
 # Exec Bar
 ~/dotfiles/polybar/launch_polybar.sh &
 # Exec Compositor
@@ -23,7 +24,7 @@ guake &
 
 
 # Set Virtual Desktops
-bspc monitor -d 1 2 3 4 5 6 7
+bspc monitor -d 1 2 3 4 5 6
 
 bspc config border_width         0
 bspc config window_gap			 8
@@ -63,10 +64,15 @@ bspc rule -a mpv state=floating
 #bspc rule -a YakYak state=floating
 bspc rule -a Nitrogen state=floating
 bspc rule -a Pamac-manager state=floating
-bspc rule -a Guake state=floating
+bspc rule -a Tilda state=floating
+bspc rule -a Steam state=floating desktop='^5'
 bspc rule -a Subl3 desktop='^2'
 bspc rule -a Atom desktop='^2'
 bspc rule -a Chromium desktop='^3'
 bspc rule -a Vivaldi-stable desktop='^3'
 bspc rule -a qBittorrent desktop='^6'
+bspc rule -a Boostnote desktop='^6'
 #bspc rule -a *:crx_nckgahadagoaajjgafhacjanaoiihapd desktop='^1'
+
+# Run Guake
+tilda &
