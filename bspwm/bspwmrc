@@ -3,7 +3,7 @@
 # Exec Hotkeys
 sxhkd &
 # Merge xrdb
-xrdb -merge ~/.Xresources
+xrdb -merge /home/darius/dotfiles/scheme/Xresources
 # Exec Redshift
 redshift &
 # Set Wallpaper

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # Source pywal colors
-. "${HOME}/.cache/wal/colors.sh"
+. "${HOME}/dotfiles/scheme/colors.sh"
 
 pkill dunst
 dunst \
 	-lb "${color0}" \
 	-lf "${color15}" \
-	-lfr "${color3}" \
+	-lfr "${accent}" \
 	-nb "${color0}" \
 	-nf "${color15}" \
-	-nfr "${color3}" \
+	-nfr "${accent}" \
 	-cb "${color0}" \
 	-cf "${color1}" \
 	-cfr "${color1}" \

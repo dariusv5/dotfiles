@@ -4,6 +4,7 @@ allow_bold = false
 clickable_url = true
 #dynamic_title = true
 font = Gohu Gohufont 10
+#font = Share tech mono 10
 #fullscreen = true
 geometry = 670x390
 icon_name = termite
